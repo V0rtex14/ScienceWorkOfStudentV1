@@ -194,7 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="ЭкоНавигатор"
+                    android:text="Туристический навигатор"
                     app:icon="@drawable/ic_link"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -204,6 +204,7 @@
                     android:layout_marginTop="6dp"
                     android:text="KyrgyzSpeak переводчик"
                     app:icon="@drawable/ic_link"/>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

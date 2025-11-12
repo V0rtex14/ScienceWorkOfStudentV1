@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:hint="Поиск по заказам"
         android:layout_marginBottom="6dp"
-        app:boxBackgroundMode="outline"
         app:startIconDrawable="@drawable/ic_search">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -47,6 +46,41 @@
             android:text="История"
             app:icon="@drawable/ic_history"/>
     </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <!-- новый ряд: фильтр/сортировка для избранного -->
+    <LinearLayout
+        android:id="@+id/filterRowFav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="start|center_vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFavFilter"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Фильтр"
+            app:icon="@drawable/ic_filter_list"
+            app:iconGravity="textStart"
+            app:strokeColor="@color/sakta_divider"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@android:color/transparent"/>
+
+        <Space android:layout_width="8dp" android:layout_height="1dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFavSort"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Сортировка"
+            app:icon="@drawable/ic_sort"
+            app:iconGravity="textStart"
+            app:strokeColor="@color/sakta_divider"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@android:color/transparent"/>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvOrders"

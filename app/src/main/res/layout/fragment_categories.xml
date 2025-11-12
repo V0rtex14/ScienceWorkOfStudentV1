@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:hint="Поиск по названию или партнёру"
         android:layout_margin="12dp"
-        app:boxBackgroundMode="outline"
         app:startIconDrawable="@drawable/ic_search">
 
         <com.google.android.material.textfield.TextInputEditText
