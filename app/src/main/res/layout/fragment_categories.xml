@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sakta_bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/sakta_bg">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilCatSearch"
@@ -11,7 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Поиск по названию или партнёру"
-        android:layout_margin="12dp">
+        android:layout_margin="12dp"
+        app:boxBackgroundMode="outline"
+        app:startIconDrawable="@drawable/ic_search">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etCatSearch"
@@ -24,5 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="8dp" />
+        android:padding="8dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/item_category_big"/>
 </LinearLayout>

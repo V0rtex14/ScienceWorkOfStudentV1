@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/sakta_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,8 +11,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Поиск"
+        android:hint="Поиск…"
         app:boxBackgroundMode="outline"
+        app:startIconDrawable="@drawable/ic_search"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,50 +25,63 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Чипы сортировки -->
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipsSort"
+    <LinearLayout
+        android:id="@+id/filterRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:singleSelection="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="12dp"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@id/tilSearch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="8dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipSortPrice"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFilter"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Фильтр"
+            app:icon="@drawable/ic_filter_list"
+            app:iconGravity="textStart"
+            app:strokeColor="@color/sakta_divider"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@android:color/transparent"/>
+
+        <Space android:layout_width="8dp" android:layout_height="1dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSort"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Сортировка"
+            app:icon="@drawable/ic_sort"
+            app:iconGravity="textStart"
+            app:strokeColor="@color/sakta_divider"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@android:color/transparent"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tvResultsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Цена" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipSortTime"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Время" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipSortDistance"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Расстояние"
-            android:enabled="false" />
-    </com.google.android.material.chip.ChipGroup>
+            android:text="99 результатов"/>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCatalog"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/chipsSort"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/filterRow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:clipToPadding="false"
-        android:paddingBottom="8dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
