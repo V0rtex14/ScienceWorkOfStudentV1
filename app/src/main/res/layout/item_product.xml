@@ -7,10 +7,9 @@
     app:cardCornerRadius="16dp"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/img"
@@ -20,61 +19,86 @@
             android:contentDescription="Фото"
             android:src="@drawable/img_food_placeholder" />
 
+        <!-- Бейдж скидки -->
+        <TextView
+            android:id="@+id/badgeDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-30%"
+            android:padding="6dp"
+            android:background="@drawable/bg_badge_green"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_margin="8dp"
+            android:visibility="gone"
+            android:layout_gravity="top|start"/>
+
+        <!-- Бейдж времени -->
+        <TextView
+            android:id="@+id/badgeUntil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="до 18:30"
+            android:padding="6dp"
+            android:background="@drawable/bg_badge_grey"
+            android:textColor="@android:color/white"
+            android:layout_margin="8dp"
+            android:visibility="gone"
+            android:layout_gravity="top|end"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Название"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/maker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Партнёр: Булочная №3"
+            android:textSize="12sp"
+            android:textColor="#8A000000"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="6dp">
 
             <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
+                android:id="@+id/price"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Название"
-                android:textSize="14sp"
+                android:layout_weight="1"
+                android:text="240 сом"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <!-- Новая строка: производитель -->
-            <TextView
-                android:id="@+id/maker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Производитель"
-                android:textSize="12sp"
-                android:textColor="#8A000000"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:visibility="gone" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingTop="6dp">
-
-                <TextView
-                    android:id="@+id/price"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="240 сом"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnAdd"
-                    style="@style/Widget.MaterialComponents.Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:minWidth="0dp"
-                    android:insetLeft="0dp"
-                    android:insetRight="0dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
-                    android:text="Бронь" />
-            </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdd"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:minWidth="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="Бронь" />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

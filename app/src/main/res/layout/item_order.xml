@@ -18,16 +18,55 @@
             android:id="@+id/orderTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Заказ №10001 — Пример"
+            android:text="Заказ №10001 — Шаурма"
             android:textSize="16sp"
             android:textStyle="bold" />
+
+        <!-- Строка статуса + время -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:id="@+id/badgeStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Активный"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/bg_badge_green"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/orderTimes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Бронь до 18:20 • Забронировано в 17:05"
+                android:textSize="12sp"
+                android:textColor="#8A000000"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnQR"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Показать QR"
+            app:icon="@drawable/ic_qr_camera"
+            app:iconGravity="textStart"
+            app:cornerRadius="12dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnMore"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:text="Подробнее"
             app:cornerRadius="12dp" />
     </LinearLayout>

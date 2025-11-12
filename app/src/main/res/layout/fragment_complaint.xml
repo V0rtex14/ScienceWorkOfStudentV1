@@ -108,6 +108,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="Подробно опишите, что с вами произошло">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Добавить фото"
+                app:icon="@drawable/ic_add_photo"/>
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
