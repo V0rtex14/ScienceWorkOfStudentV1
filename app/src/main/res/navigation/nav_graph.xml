@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/catalogFragment">
+
+
+    <fragment
+        android:id="@+id/catalogFragment"
+        android:name="com.example.maket.ui.catalog.CatalogFragment"
+        android:label="Каталог">
+        <action
+            android:id="@+id/action_catalog_to_detail"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.maket.ui.categories.CategoriesFragment"
+        android:label="Категории" />
+
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.maket.ui.favorites.FavoritesFragment"
+        android:label="Избранное">
+        <action
+            android:id="@+id/action_favorites_to_qr"
+            app:destination="@id/qrFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/complaintFragment"
+        android:name="com.example.maket.ui.complaint.ComplaintFragment"
+        android:label="Жалоба" />
+
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.maket.ui.profile.ProfileFragment"
+        android:label="Профиль" />
+
+
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.example.maket.ui.detail.ProductDetailFragment"
+        android:label="Профиль еды" />
+    <fragment
+        android:id="@+id/qrFragment"
+        android:name="com.example.maket.ui.qr.QrFragment"
+        android:label="QR" />
+</navigation>

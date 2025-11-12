@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sakta_bg">#F8F9FA</color>
+    <color name="sakta_surface">#E1E2E4</color>
+    <color name="sakta_surface2">#D2D5D8</color>
+    <color name="sakta_tint">#DDEAD1</color>
+    <color name="sakta_primary">#52A447</color>
+</resources>
