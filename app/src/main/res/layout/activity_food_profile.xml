@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpImages"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Шаурма классическая"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Описание блюда..."
+            android:layout_marginTop="8dp"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvPriceOld"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="200 с"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tvPriceNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="150 с"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="4dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Забрать со скидкой"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>
