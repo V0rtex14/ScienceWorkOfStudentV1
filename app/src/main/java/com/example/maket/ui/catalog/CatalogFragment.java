@@ -16,43 +16,50 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.*;
 
 public class CatalogFragment extends Fragment {
+
+    private RecyclerView rvCatalog;
+    private ProductAdapter adapter;
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater i, @Nullable ViewGroup c, @Nullable Bundle b) {
-        return i.inflate(R.layout.fragment_catalog, c, false);
-    }
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_catalog, container, false);
 
-    @Override
-    public void onViewCreated(@NonNull View v, @Nullable Bundle b) {
-        RecyclerView rv = v.findViewById(R.id.rvCatalog); // <-- ВАЖНО: тот же id, что в fragment_catalog.xml
-        rv.setLayoutManager(new LinearLayoutManager(requireContext()));
+        rvCatalog = v.findViewById(R.id.rvCatalog);
+        rvCatalog.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        ProductAdapter ad = new ProductAdapter(demo(), new ProductAdapter.Listener() {
+        adapter = new ProductAdapter(new ProductAdapter.OnProductActionListener() {
             @Override
-            public void onAdd(Product p) {
-                Toast.makeText(requireContext(), "Добавлено: " + p.title, Toast.LENGTH_SHORT).show();
+            public void onProductClick(Product product) {
+                // Открыть экран деталей
+                // TODO: навигация к ProductDetailFragment
             }
 
             @Override
-            public void onOpen(Product p) {
-                NavHostFragment.findNavController(CatalogFragment.this)
-                        .navigate(R.id.action_catalog_to_detail);
+            public void onBookClick(Product product) {
+                // TODO: логика бронирования (пока можно Toast)
+                // Toast.makeText(requireContext(), "Бронь: " + product.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
-        rv.setAdapter(ad);
 
-        TextInputEditText search = v.findViewById(R.id.etSearch);
-        if (search != null) {
-            search.setOnFocusChangeListener((vv, has) -> { /* декорация */ });
-        }
+        rvCatalog.setAdapter(adapter);
+
+        // Пока тестовые данные, потом заменим на данные из SQLite
+        adapter.setItems(getDemoProducts());
+
+        return v;
     }
 
-    private List<Product> demo() {
-        return Arrays.asList(
-                new Product("Шаурма куриная", 240, R.drawable.shawerma, "Bishkek Shawarma Co."),
-                new Product("Самса с говядиной", 120, R.drawable.samsa, "Ош-Базар Bakery"),
-                new Product("Салат свежий", 95, R.drawable.salat, "Dastorkon Foods"),
-                new Product("Плов по-фергански", 270, R.drawable.plov, "Asia Taste")
-        );
+    private List<Product> getDemoProducts() {
+        List<Product> list = new ArrayList<>();
+        list.add(new Product(1, "Шаурма куриная",
+                "Осталась с обеда, забрать до 21:00",
+                220, 110, 50, R.drawable.ic_category_food));
+        list.add(new Product(2, "Салат Цезарь",
+                "Порция 350 г, срок до 20:30",
+                180, 90, 50, R.drawable.ic_category_food));
+        return list;
     }
 }

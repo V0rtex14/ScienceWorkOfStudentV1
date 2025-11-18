@@ -1,0 +1,5 @@
+<!-- res/drawable/bg_status_chip.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/sakta_tint"/>
+    <corners android:radius="999dp"/>
+</shape>

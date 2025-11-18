@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
     app:cardCornerRadius="16dp"
+    app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@color/sakta_surface"
-    app:cardUseCompatPadding="true">
+    app:strokeColor="@color/sakta_divider"
+    app:strokeWidth="1dp"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,60 +19,101 @@
         android:orientation="vertical"
         android:padding="12dp">
 
-        <TextView
-            android:id="@+id/orderTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Заказ №10001 — Шаурма"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <!-- Строка статуса + время -->
+        <!-- Верхняя строка: статус + номер -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingTop="4dp">
+            android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/badgeStatus"
+                android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Активный"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
-                android:background="@drawable/bg_badge_green"
-                android:textColor="@android:color/white"/>
-
-            <TextView
-                android:id="@+id/orderTimes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Бронь до 18:20 • Забронировано в 17:05"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:text="Активен"
                 android:textSize="12sp"
-                android:textColor="#8A000000"/>
+                android:textStyle="bold"
+                android:textColor="@color/sakta_primary"
+                android:background="@drawable/bg_status_chip"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tvOrderNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Заказ №10421"
+                android:textSize="13sp"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnQR"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Показать QR"
-            app:icon="@drawable/ic_qr_camera"
-            app:iconGravity="textStart"
-            app:cornerRadius="12dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMore"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+        <!-- Товар / партнёр / время -->
+        <TextView
+            android:id="@+id/tvProductName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="Подробнее"
-            app:cornerRadius="12dp" />
+            android:text="Набор выпечки “Утро”"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/tvPartner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Пекарня “Доброе утро”"
+            android:textSize="13sp"
+            android:textColor="@color/sakta_text_muted"/>
+
+        <TextView
+            android:id="@+id/tvPickupTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Забрать до 21:30"
+            android:textSize="13sp"
+            android:textColor="@color/sakta_text_muted"/>
+
+        <!-- Кнопки -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDetails"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Подробнее"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_qr_camera"
+                app:iconGravity="textStart" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="0dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Отменить"
+                android:textAllCaps="false"
+                android:textColor="#FF3B30" />
+        </LinearLayout>
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
