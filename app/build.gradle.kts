@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation(libs.androidx.navigation.fragment)

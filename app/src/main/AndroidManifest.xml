@@ -12,6 +12,7 @@
 
         <!-- Стартовая активность — LoginActivity -->
         <activity
+
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -23,6 +24,9 @@
         <!-- Главная активность с bottom-nav и nav_host -->
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.food.FoodProfileActivity"
             android:exported="false" />
 
         <!-- Если у тебя есть SplashActivity, оставь её тут -->

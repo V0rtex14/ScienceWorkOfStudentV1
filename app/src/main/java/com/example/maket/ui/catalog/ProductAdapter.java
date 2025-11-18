@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.maket.R;
 import com.google.android.material.button.MaterialButton;
@@ -16,10 +17,6 @@ import com.google.android.material.button.MaterialButton;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Адаптер для списка товаров в каталоге.
- * Ожидает layout item_product.xml
- */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     public interface OnProductActionListener {
@@ -57,16 +54,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.tvTitle.setText(p.getTitle());
         holder.tvDesc.setText(p.getDescription());
 
-        // Цены
         holder.tvPriceOld.setText(p.getOldPrice() + " с");
         holder.tvPriceNew.setText(p.getNewPrice() + " с");
 
-        // Пересчёт скидки, если не задана явно
+        // Пересчёт скидки
         int discount = p.getDiscountPercent();
         if (discount == 0 && p.getOldPrice() > 0 && p.getNewPrice() > 0) {
-            discount = Math.round(
-                    (1f - (float) p.getNewPrice() / (float) p.getOldPrice()) * 100f
-            );
+            discount = Math.round((1f - (float) p.getNewPrice() / (float) p.getOldPrice()) * 100f);
         }
         if (discount > 0) {
             holder.tvDiscount.setVisibility(View.VISIBLE);
@@ -80,13 +74,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 holder.tvPriceOld.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG
         );
 
-        // Фото — пока просто по ресурсу (локальный drawable).
-        // Потом сюда можно прикрутить Glide/Picasso для URL.
-        if (p.getImageResId() != 0) {
-            holder.imgPhoto.setImageResource(p.getImageResId());
-        } else {
-            holder.imgPhoto.setImageResource(android.R.drawable.ic_menu_report_image);
+        // Карусель фоток
+        int[] images = p.getImageResIds();
+        if (images == null || images.length == 0) {
+            images = new int[]{ android.R.drawable.ic_menu_report_image };
         }
+        holder.vpImages.setAdapter(new ImagePagerAdapter(images));
 
         // Клик по всей карточке
         holder.itemView.setOnClickListener(v -> {
@@ -106,7 +99,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imgPhoto;
+        ViewPager2 vpImages;
         TextView tvTitle;
         TextView tvDesc;
         TextView tvPriceOld;
@@ -116,13 +109,49 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgPhoto = itemView.findViewById(R.id.imgPhoto);
+            vpImages = itemView.findViewById(R.id.vpImages);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDesc = itemView.findViewById(R.id.tvDesc);
             tvPriceOld = itemView.findViewById(R.id.tvPriceOld);
             tvDiscount = itemView.findViewById(R.id.tvDiscount);
             tvPriceNew = itemView.findViewById(R.id.tvPriceNew);
             btnBook = itemView.findViewById(R.id.btnBook);
+        }
+    }
+
+    // ----- Адаптер для ViewPager2 -----
+    public static class ImagePagerAdapter extends RecyclerView.Adapter<ImagePagerAdapter.ImageVH> {
+
+        private final int[] images;
+
+        public ImagePagerAdapter(int[] images) {
+            this.images = images;
+        }
+
+        @NonNull
+        @Override
+        public ImageVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_product_image, parent, false);
+            return new ImageVH(v);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ImageVH holder, int position) {
+            holder.ivFood.setImageResource(images[position]);
+        }
+
+        @Override
+        public int getItemCount() {
+            return images != null ? images.length : 0;
+        }
+
+        static class ImageVH extends RecyclerView.ViewHolder {
+            ImageView ivFood;
+            public ImageVH(@NonNull View itemView) {
+                super(itemView);
+                ivFood = itemView.findViewById(R.id.ivFood);
+            }
         }
     }
 }
