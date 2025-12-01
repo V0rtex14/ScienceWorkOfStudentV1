@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Sakta" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/sakta_primary</item>
+        <item name="colorSurface">@color/sakta_surface</item>
+        <item name="android:windowBackground">@color/sakta_bg</item>
+        <!-- опционально: цвет тулбара/навбара -->
+        <item name="toolbarStyle">@style/Widget.Material3.Toolbar</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.Sakta.RoundedMedium">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="Theme.Sakta.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Здесь можно переопределить цвета, если нужно -->
+        <item name="android:statusBarColor">@color/sakta_primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

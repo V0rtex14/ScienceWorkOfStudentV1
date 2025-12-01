@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "688494065744",
+    "project_id": "sakta-c3467",
+    "storage_bucket": "sakta-c3467.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688494065744:android:5da69b425a27ac0a9df955",
+        "android_client_info": {
+          "package_name": "com.example.sakta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvUreOxAAALbmVgmXtW9sccljHF55c_vU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sakta">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Sakta"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Sakta">
+
+        <!-- Экран входа -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Sakta.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Экран выбора роли (покупатель / поставщик) — ЭТОТ БЫЛ ПРОПУЩЕН! -->
+        <activity
+            android:name=".SelectRoleActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Sakta.NoActionBar" />
+
+        <!-- Экран регистрации (один для обеих ролей) -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Sakta.NoActionBar" />
+
+        <!-- Главный экран с BottomNavigationView -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Sakta.NoActionBar" />
+
+        <!-- Если позже добавишь Splash — раскомментируй -->
+        <!--
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false"
+            android:theme="@style/Theme.App.Splash" />
+        -->
+
+    </application>
+
+</manifest>
