@@ -14,6 +14,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sakta.core.ThemeManager;
+import com.example.sakta.ui.profile.ProfileFragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ThemeManager.applyThemeFromPreferences(this);
         setContentView(R.layout.activity_register);
 
         auth = FirebaseAuth.getInstance();
@@ -174,6 +177,7 @@ public class RegisterActivity extends AppCompatActivity {
                             .set(userData)
                             .addOnSuccessListener(aVoid -> {
                                 Toast.makeText(RegisterActivity.this, "Регистрация успешна!", Toast.LENGTH_SHORT).show();
+                                saveEmail(email);
                                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                                 finish();
                             })
@@ -186,5 +190,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     private String getTextSafe(TextInputEditText editText) {
         return editText.getText() != null ? editText.getText().toString().trim() : "";
+    }
+
+    private void saveEmail(String email) {
+        getSharedPreferences(ProfileFragment.PREFS_NAME, MODE_PRIVATE)
+                .edit()
+                .putString(ProfileFragment.KEY_USER_EMAIL, email)
+                .apply();
     }
 }

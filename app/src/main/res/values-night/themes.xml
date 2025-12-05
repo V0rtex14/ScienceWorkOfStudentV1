@@ -3,8 +3,12 @@
     <style name="Theme.Sakta" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/sakta_primary</item>
         <item name="colorSurface">@color/sakta_surface2</item>
+        <item name="colorOnPrimary">@color/sakta_on_primary</item>
+        <item name="colorOnSurface">@color/sakta_text_primary</item>
+        <item name="colorOnBackground">@color/sakta_text_primary</item>
         <item name="android:windowBackground">@color/sakta_surface2</item>
         <item name="android:statusBarColor">@color/sakta_primary_dark</item>
         <item name="android:navigationBarColor">@color/sakta_surface2</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>

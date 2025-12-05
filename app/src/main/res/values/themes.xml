@@ -4,6 +4,9 @@
         <item name="colorPrimary">@color/sakta_primary</item>
         <item name="colorSecondary">@color/sakta_secondary</item>
         <item name="colorSurface">@color/sakta_surface</item>
+        <item name="colorOnPrimary">@color/sakta_on_primary</item>
+        <item name="colorOnSurface">@color/sakta_text_primary</item>
+        <item name="colorOnBackground">@color/sakta_text_primary</item>
         <item name="android:windowBackground">@color/sakta_bg</item>
         <item name="toolbarStyle">@style/Widget.Material3.Toolbar</item>
         <item name="android:statusBarColor">@color/sakta_primary</item>
