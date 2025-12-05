@@ -4,7 +4,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/catalogFragment">
 
-
     <fragment
         android:id="@+id/catalogFragment"
         android:name="com.example.sakta.ui.catalog.CatalogFragment"
@@ -14,12 +13,10 @@
             app:destination="@id/productDetailFragment" />
     </fragment>
 
-
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.example.sakta.ui.categories.CategoriesFragment"
         android:label="Категории" />
-
 
     <fragment
         android:id="@+id/favoritesFragment"
@@ -30,23 +27,21 @@
             app:destination="@id/qrFragment" />
     </fragment>
 
-
     <fragment
         android:id="@+id/complaintFragment"
         android:name="com.example.sakta.ui.complaint.ComplaintFragment"
         android:label="Жалоба" />
-
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.sakta.ui.profile.ProfileFragment"
         android:label="Профиль" />
 
-
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.example.sakta.ui.detail.ProductDetailFragment"
         android:label="Профиль еды" />
+
     <fragment
         android:id="@+id/qrFragment"
         android:name="com.example.sakta.ui.qr.QrFragment"

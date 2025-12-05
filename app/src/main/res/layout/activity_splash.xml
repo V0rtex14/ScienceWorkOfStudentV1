@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sakta_tint">
-
+    android:background="@drawable/bg_primary_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,20 +10,29 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_gravity="center"
-        android:padding="24dp">
-
+        android:padding="28dp">
 
         <ImageView
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:src="@drawable/logo_sakta"
-            android:contentDescription="Sakta"/>
+            android:contentDescription="Sakta" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Спасём еду!"
             android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="12dp"/>
+            android:textSize="20sp"
+            android:textColor="@color/sakta_on_primary"
+            android:layout_marginTop="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Материал 3 — 2025"
+            android:textColor="@color/sakta_on_primary"
+            android:alpha="0.85"
+            android:layout_marginTop="4dp" />
     </LinearLayout>
 </FrameLayout>

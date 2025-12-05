@@ -7,6 +7,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sakta.core.ThemeManager;
+import com.example.sakta.ui.profile.ProfileFragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ThemeManager.applyThemeFromPreferences(this);
         setContentView(R.layout.activity_login);
 
         auth = FirebaseAuth.getInstance();
@@ -62,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
         auth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
+                    saveEmail(email);
                     Toast.makeText(LoginActivity.this, "Добро пожаловать!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
@@ -81,5 +85,12 @@ public class LoginActivity extends AppCompatActivity {
     // Безопасное получение текста из EditText
     private String getTextSafe(TextInputEditText editText) {
         return editText.getText() != null ? editText.getText().toString().trim() : "";
+    }
+
+    private void saveEmail(String email) {
+        getSharedPreferences(ProfileFragment.PREFS_NAME, MODE_PRIVATE)
+                .edit()
+                .putString(ProfileFragment.KEY_USER_EMAIL, email)
+                .apply();
     }
 }

@@ -6,5 +6,6 @@
     android:text="Сегодня"
     android:textStyle="bold"
     android:textAllCaps="true"
-    android:padding="8dp"
-    android:textColor="#666666"/>
+    android:padding="10dp"
+    android:textColor="@color/sakta_text_muted"
+    android:background="@color/sakta_surface2" />

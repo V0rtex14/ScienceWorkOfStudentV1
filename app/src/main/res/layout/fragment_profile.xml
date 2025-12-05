@@ -12,25 +12,29 @@
         android:orientation="vertical"
         android:animateLayoutChanges="true">
 
-        <!-- Блок аккаунта -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="@color/sakta_surface">
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/sakta_surface"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/sakta_divider">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp"
+                android:padding="18dp"
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:src="@drawable/ic_profile"
-                    android:contentDescription="Профиль"/>
+                    android:contentDescription="Профиль"
+                    android:background="@drawable/bg_primary_gradient"
+                    android:padding="12dp" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -45,7 +49,8 @@
                         android:layout_height="wrap_content"
                         android:text="user@mail.com"
                         android:textStyle="bold"
-                        android:textSize="15sp" />
+                        android:textSize="16sp"
+                        android:textColor="@color/sakta_text_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -61,23 +66,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Изменить"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Статистика -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="22dp"
+            app:strokeColor="@color/sakta_divider"
+            app:strokeWidth="1dp"
             app:cardBackgroundColor="@color/sakta_surface">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="18dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -98,7 +104,8 @@
                         android:layout_height="wrap_content"
                         android:text="0 c"
                         android:textStyle="bold"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/sakta_text_primary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -120,26 +127,28 @@
                         android:layout_height="wrap_content"
                         android:text="0 г"
                         android:textStyle="bold"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/sakta_text_primary" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Меню профиля -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/sakta_divider"
             app:cardBackgroundColor="@color/sakta_surface">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingVertical="4dp">
+                android:paddingVertical="8dp">
 
-                <!-- Пункты меню, потом обработаешь клики -->
                 <TextView
                     android:id="@+id/itemHistory"
                     style="@style/TextAppearance.Material3.BodyLarge"
@@ -147,12 +156,12 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="История заказов"
-                    android:foreground="?attr/selectableItemBackground"/>
+                    android:foreground="?attr/selectableItemBackground" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/sakta_divider"/>
+                    android:background="@color/sakta_divider" />
 
                 <TextView
                     android:id="@+id/itemComplaints"
@@ -161,12 +170,12 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="Мои жалобы"
-                    android:foreground="?attr/selectableItemBackground"/>
+                    android:foreground="?attr/selectableItemBackground" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/sakta_divider"/>
+                    android:background="@color/sakta_divider" />
 
                 <TextView
                     android:id="@+id/itemSupport"
@@ -175,16 +184,18 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="Поддержка"
-                    android:foreground="?attr/selectableItemBackground"/>
+                    android:foreground="?attr/selectableItemBackground" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Проекты друзей (если хочешь оставить) -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/sakta_divider"
             app:cardBackgroundColor="@color/sakta_surface">
 
             <LinearLayout
@@ -197,7 +208,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Проекты друзей"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/sakta_text_primary" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnEcoNavigator"
@@ -206,7 +218,7 @@
                     android:layout_marginTop="8dp"
                     android:text="ЭкоНавигатор"
                     app:icon="@drawable/ic_link"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnKyrgyzSpeak"
@@ -215,11 +227,55 @@
                     android:layout_marginTop="6dp"
                     android:text="KyrgyzSpeak переводчик"
                     app:icon="@drawable/ic_link"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Выход -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="22dp"
+            app:strokeColor="@color/sakta_divider"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@color/sakta_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="18dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Тема оформления"
+                        android:textStyle="bold"
+                        android:textColor="@color/sakta_text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Светлая или тёмная"
+                        android:textColor="@color/sakta_text_muted" />
+                </LinearLayout>
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switchTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
             style="@style/Widget.Material3.Button.OutlinedButton"
@@ -228,8 +284,7 @@
             android:layout_marginTop="16dp"
             android:text="Выйти из аккаунта"
             android:textAllCaps="false"
-            android:textColor="#FF3B30"
-            app:icon="@drawable/ic_logout"/>
-
+            android:textColor="@color/sakta_error"
+            app:icon="@drawable/ic_logout" />
     </LinearLayout>
 </ScrollView>

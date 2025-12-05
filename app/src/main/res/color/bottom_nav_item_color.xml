@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:color="@color/sakta_primary_dark"/>
-    <item android:color="@color/sakta_divider"/>
+    <item android:state_checked="true" android:color="@color/sakta_primary" />
+    <item android:color="@color/sakta_text_muted" />
 </selector>

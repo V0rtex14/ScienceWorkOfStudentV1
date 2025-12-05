@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sort_price_asc"
+        android:title="Цена: сначала ниже" />
+    <item
+        android:id="@+id/sort_price_desc"
+        android:title="Цена: сначала выше" />
+    <item
+        android:id="@+id/sort_discount"
+        android:title="Скидка: больше" />
+    <item
+        android:id="@+id/sort_distance"
+        android:title="Ближе к вам" />
+</menu>

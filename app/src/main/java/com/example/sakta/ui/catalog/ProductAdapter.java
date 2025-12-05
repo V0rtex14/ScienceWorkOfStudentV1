@@ -15,6 +15,7 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Адаптер для списка товаров в каталоге.
@@ -56,6 +57,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         holder.tvTitle.setText(p.getTitle());
         holder.tvDesc.setText(p.getDescription());
+        holder.tvPickup.setText(p.getPickupUntil());
+        holder.tvDistance.setText(String.format(Locale.getDefault(), "%.1f км", p.getDistanceKm()));
+        holder.tvRating.setText(String.format(Locale.getDefault(), "★ %.1f", p.getRating()));
 
         // Цены
         holder.tvPriceOld.setText(p.getOldPrice() + " с");
@@ -109,6 +113,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         ImageView imgPhoto;
         TextView tvTitle;
         TextView tvDesc;
+        TextView tvPickup;
+        TextView tvDistance;
+        TextView tvRating;
         TextView tvPriceOld;
         TextView tvDiscount;
         TextView tvPriceNew;
@@ -119,6 +126,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             imgPhoto = itemView.findViewById(R.id.imgPhoto);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDesc = itemView.findViewById(R.id.tvDesc);
+            tvPickup = itemView.findViewById(R.id.tvPickup);
+            tvDistance = itemView.findViewById(R.id.tvDistance);
+            tvRating = itemView.findViewById(R.id.tvRating);
             tvPriceOld = itemView.findViewById(R.id.tvPriceOld);
             tvDiscount = itemView.findViewById(R.id.tvDiscount);
             tvPriceNew = itemView.findViewById(R.id.tvPriceNew);

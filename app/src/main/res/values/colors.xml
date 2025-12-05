@@ -1,13 +1,26 @@
 <resources>
-    <!-- твои уже добавленные -->
-    <color name="sakta_bg">#F8F9FA</color>
-    <color name="sakta_surface">#E1E2E4</color>
-    <color name="sakta_divider">#D2D5D8</color>
-    <color name="sakta_tint">#DDEAD1</color>
-    <color name="sakta_primary">#95BB72</color>
-    <color name="sakta_primary_dark">#4B6043</color>
-    <color name="sakta_text_muted">#6B7280</color>
+    <!-- Base palette -->
+    <color name="sakta_primary">#6FB58F</color>
+    <color name="sakta_primary_dark">#3D6C52</color>
+    <color name="sakta_secondary">#5E6CE1</color>
+    <color name="sakta_on_primary">#FFFFFFFF</color>
 
-    <!-- недоставало вот этого -->
-    <color name="sakta_surface2">#D2D5D8</color>
+    <!-- Surfaces -->
+    <color name="sakta_bg">#F5F7FB</color>
+    <color name="sakta_surface">#FFFFFFFF</color>
+    <color name="sakta_surface2">#E9EEF3</color>
+    <color name="sakta_divider">#E1E5EB</color>
+
+    <!-- Content -->
+    <color name="sakta_text_primary">#1F2933</color>
+    <color name="sakta_text_muted">#6B7685</color>
+    <color name="sakta_success">#3CB179</color>
+    <color name="sakta_warning">#F2C94C</color>
+    <color name="sakta_error">#EF6C57</color>
+
+    <!-- Gradients / accents -->
+    <color name="sakta_gradient_start">#7AC7A3</color>
+    <color name="sakta_gradient_end">#6B89E5</color>
+    <color name="sakta_chip_bg">#EEF4FF</color>
+    <color name="sakta_chip_stroke">#D7E0FF</color>
 </resources>

@@ -10,108 +10,158 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/logo_sakta" />
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:src="@drawable/logo_sakta"
+            android:contentDescription="Sakta" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Кто вы?"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginTop="32dp"
-            android:textColor="@android:color/black" />
+            android:layout_marginTop="20dp"
+            style="@style/TextAppearance.Sakta.Title"
+            android:text="Выберите роль" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Выберите тип аккаунта"
-            android:layout_marginTop="8dp"
-            android:textColor="#555555" />
+            android:text="Продолжим персонально для вас"
+            android:textColor="@color/sakta_text_muted"
+            android:layout_marginTop="4dp" />
 
-        <!-- Покупатель -->
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardBuyer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/sakta_divider"
+            app:strokeWidth="1dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp"
-                android:gravity="center">
+                android:orientation="horizontal"
+                android:padding="18dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_primary_gradient"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    android:layout_marginEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_buyer"
+                        android:contentDescription="Покупатель" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Я покупатель"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:textColor="@color/sakta_text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Получайте скидки и спасайте еду рядом"
+                        android:textColor="@color/sakta_text_muted"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_buyer" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Я покупатель"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ищу скидки на еду рядом"
-                    android:textColor="#666666"
-                    android:layout_marginTop="4dp" />
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chevron_right"
+                    android:tint="@color/sakta_text_muted" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <!-- Поставщик -->
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardSeller"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/sakta_divider"
+            app:strokeWidth="1dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp"
-                android:gravity="center">
+                android:orientation="horizontal"
+                android:padding="18dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_primary_gradient"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    android:layout_marginEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_seller"
+                        android:contentDescription="Поставщик" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Я поставщик"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:textColor="@color/sakta_text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Кафе, маркет, пекарня — продавайте остатки красиво"
+                        android:textColor="@color/sakta_text_muted"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_seller" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Я поставщик"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Магазин, кафе, пекарня"
-                    android:textColor="#666666"
-                    android:layout_marginTop="4dp" />
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chevron_right"
+                    android:tint="@color/sakta_text_muted" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </ScrollView>
