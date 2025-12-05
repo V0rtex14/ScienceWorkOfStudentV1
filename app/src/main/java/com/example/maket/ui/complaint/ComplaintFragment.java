@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.*;
 import androidx.fragment.app.Fragment;
 
-import com.example.maket.R;
+import com.example.sakta.R;
 
 
 public class ComplaintFragment extends Fragment {

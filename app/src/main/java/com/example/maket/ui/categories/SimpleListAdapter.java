@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.*;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.maket.R;
+import com.example.sakta.R;
 
 import java.util.*;
 

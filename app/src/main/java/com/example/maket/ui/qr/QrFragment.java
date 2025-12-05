@@ -7,7 +7,7 @@ import android.view.*;
 import androidx.annotation.*;
 import androidx.fragment.app.Fragment;
 
-import com.example.maket.R;
+import com.example.sakta.R;
 
 
 public class QrFragment extends Fragment {

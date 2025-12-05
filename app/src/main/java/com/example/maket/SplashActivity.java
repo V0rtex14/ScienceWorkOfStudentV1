@@ -1,6 +1,6 @@
 // SplashActivity.java (простая заставка)
 package com.example.maket;
-
+import com.example.sakta.R;
 
 import android.content.Intent;
 import android.os.Bundle;

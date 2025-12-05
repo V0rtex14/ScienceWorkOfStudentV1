@@ -10,7 +10,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.maket.R;
+import com.example.sakta.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.*;

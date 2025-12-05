@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.maket.LoginActivity;
-import com.example.maket.R;
+import com.example.sakta.R;
 import com.google.android.material.button.MaterialButton;
 
 public class ProfileFragment extends Fragment {
