@@ -33,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     private LinearLayout sellerFields;
     private ImageView ivBusinessPhoto, ivLicense;
     private MaterialButton btnRegister;
+    private ImageView activePickerTarget;
 
     private String role;
     private Uri businessPhotoUri = null;
@@ -42,16 +43,17 @@ public class RegisterActivity extends AppCompatActivity {
     private final ActivityResultLauncher<String> pickMediaLauncher = registerForActivityResult(
             new ActivityResultContracts.GetContent(),
             uri -> {
-                if (uri != null) {
-                    // Определяем, какое поле обновляем
-                    if (getCurrentFocus() == ivBusinessPhoto) {
-                        businessPhotoUri = uri;
-                        ivBusinessPhoto.setImageURI(uri);
-                    } else if (getCurrentFocus() == ivLicense) {
-                        licenseUri = uri;
-                        ivLicense.setImageURI(uri);
-                    }
+                if (uri == null || activePickerTarget == null) {
+                    return;
                 }
+                if (activePickerTarget == ivBusinessPhoto) {
+                    businessPhotoUri = uri;
+                    ivBusinessPhoto.setImageURI(uri);
+                } else if (activePickerTarget == ivLicense) {
+                    licenseUri = uri;
+                    ivLicense.setImageURI(uri);
+                }
+                activePickerTarget = null;
             });
 
     @Override
@@ -63,6 +65,9 @@ public class RegisterActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         role = getIntent().getStringExtra("role"); // "buyer" или "seller"
+        if (role == null) {
+            role = "buyer";
+        }
         String prefilledEmail = getIntent().getStringExtra("prefilled_email");
 
         // Привязываем все View один раз
@@ -91,18 +96,17 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         // Клик по фото → выбор изображения
-        ivBusinessPhoto.setOnClickListener(v -> {
-            v.requestFocus();
-            pickMediaLauncher.launch("image/*");
-        });
+        ivBusinessPhoto.setOnClickListener(v -> openPicker(ivBusinessPhoto, "image/*"));
 
-        ivLicense.setOnClickListener(v -> {
-            v.requestFocus();
-            pickMediaLauncher.launch("*/*"); // фото + PDF
-        });
+        ivLicense.setOnClickListener(v -> openPicker(ivLicense, "*/*")); // фото + PDF
 
         // Кнопка регистрации
         btnRegister.setOnClickListener(v -> attemptRegister());
+    }
+
+    private void openPicker(ImageView target, String mimeType) {
+        activePickerTarget = target;
+        pickMediaLauncher.launch(mimeType);
     }
 
     private void attemptRegister() {

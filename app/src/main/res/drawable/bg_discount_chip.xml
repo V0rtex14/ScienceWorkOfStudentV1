@@ -1,5 +1,4 @@
-<!-- res/drawable/bg_discount_chip.xml -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/sakta_tint"/>
-    <corners android:radius="999dp"/>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/sakta_primary" />
+    <corners android:radius="14dp" />
 </shape>

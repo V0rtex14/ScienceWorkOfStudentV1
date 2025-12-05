@@ -4,5 +4,7 @@
         <item name="colorPrimary">@color/sakta_primary</item>
         <item name="colorSurface">@color/sakta_surface2</item>
         <item name="android:windowBackground">@color/sakta_surface2</item>
+        <item name="android:statusBarColor">@color/sakta_primary_dark</item>
+        <item name="android:navigationBarColor">@color/sakta_surface2</item>
     </style>
 </resources>

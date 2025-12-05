@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sakta.R;
@@ -61,21 +62,19 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         // Цвет статуса
         switch (order.getStatus()) {
             case Order.STATUS_ACTIVE:
-                holder.tvStatus.setTextColor(
-                        holder.itemView.getResources().getColor(R.color.sakta_primary)
-                );
+                holder.tvStatus.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.sakta_primary));
                 break;
 
             case Order.STATUS_CANCELLED:
-                holder.tvStatus.setTextColor(0xFFFF3B30); // красный
+                holder.tvStatus.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.sakta_error));
                 break;
 
             case Order.STATUS_EXPIRED:
-                holder.tvStatus.setTextColor(0xFFA0A0A0); // серый
+                holder.tvStatus.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.sakta_text_muted));
                 break;
 
             case Order.STATUS_COMPLETED:
-                holder.tvStatus.setTextColor(0xFF4CAF50); // зелёный
+                holder.tvStatus.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.sakta_success));
                 break;
         }
 

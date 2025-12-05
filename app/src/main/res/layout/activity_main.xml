@@ -3,28 +3,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/sakta_bg">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:elevation="1dp">
+        android:background="@drawable/bg_primary_gradient"
+        android:elevation="0dp"
+        android:padding="12dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white"
-            app:title="Каталог"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:paddingHorizontal="8dp"
+            app:title="Sakta"
             app:titleCentered="true"
-            app:titleTextColor="@android:color/black"
-            app:menu="@menu/menu_top"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/sakta_divider"/>
+            app:titleTextColor="@color/sakta_on_primary"
+            app:subtitle="Анти-фудвейст маркет"
+            app:subtitleTextColor="@color/sakta_on_primary"
+            app:menu="@menu/menu_top" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
@@ -35,21 +35,37 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:navGraph="@navigation/nav_graph"
         android:clipToPadding="false"
-        android:paddingBottom="?attr/actionBarSize" />
+        android:paddingBottom="88dp"
+        app:defaultNavHost="true" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_gravity="bottom"
-        android:background="@color/sakta_divider"/>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_bar"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@android:color/white"
-        app:itemIconTint="@color/bottom_nav_item_color"
-        app:itemTextColor="@color/bottom_nav_item_color"
-        app:menu="@menu/menu_bottom"/>
+        android:layout_margin="12dp"
+        app:cardCornerRadius="22dp"
+        app:cardElevation="6dp"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bottom_nav"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:itemIconTint="@color/bottom_nav_item_color"
+                app:itemTextColor="@color/bottom_nav_item_color"
+                app:itemRippleColor="@color/sakta_divider"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/menu_bottom" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
