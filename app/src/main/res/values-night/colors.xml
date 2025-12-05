@@ -1,22 +1,22 @@
 <resources>
-    <color name="sakta_primary">#8F80FF</color>
-    <color name="sakta_primary_dark">#5E4BD1</color>
-    <color name="sakta_secondary">#FF9FCA</color>
+    <color name="sakta_primary">#7AC7A3</color>
+    <color name="sakta_primary_dark">#5BA283</color>
+    <color name="sakta_secondary">#8FA2FF</color>
     <color name="sakta_on_primary">#FFFFFFFF</color>
 
     <color name="sakta_bg">#0F1115</color>
-    <color name="sakta_surface">#191B24</color>
-    <color name="sakta_surface2">#101118</color>
-    <color name="sakta_divider">#242733</color>
+    <color name="sakta_surface">#1A1D23</color>
+    <color name="sakta_surface2">#101318</color>
+    <color name="sakta_divider">#262A32</color>
 
     <color name="sakta_text_primary">#F5F6FB</color>
-    <color name="sakta_text_muted">#A9B0BD</color>
+    <color name="sakta_text_muted">#B8BEC9</color>
     <color name="sakta_success">#4DD0A0</color>
     <color name="sakta_warning">#F2C94C</color>
     <color name="sakta_error">#EF6C57</color>
 
-    <color name="sakta_gradient_start">#7465FF</color>
-    <color name="sakta_gradient_end">#9B6CFF</color>
-    <color name="sakta_chip_bg">#202333</color>
-    <color name="sakta_chip_stroke">#2E3242</color>
+    <color name="sakta_gradient_start">#4FB48B</color>
+    <color name="sakta_gradient_end">#5168C9</color>
+    <color name="sakta_chip_bg">#202733</color>
+    <color name="sakta_chip_stroke">#2E3543</color>
 </resources>

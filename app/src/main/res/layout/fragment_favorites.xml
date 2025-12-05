@@ -116,40 +116,4 @@
         android:clipToPadding="false"
         android:paddingBottom="12dp"
         tools:listitem="@layout/item_order" />
-
-    <LinearLayout
-        android:id="@+id/emptyState"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        android:background="@drawable/bg_chip_soft"
-        android:gravity="center"
-        android:padding="24dp"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:src="@drawable/ic_favorite"
-            android:tint="@color/sakta_primary" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="У вас пока нет избранного"
-            android:textColor="@color/sakta_text_primary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:gravity="center"
-            android:text="Добавляйте любимые блюда и забирайте со скидкой!"
-            android:textColor="@color/sakta_text_muted"
-            android:textSize="14sp" />
-    </LinearLayout>
 </LinearLayout>

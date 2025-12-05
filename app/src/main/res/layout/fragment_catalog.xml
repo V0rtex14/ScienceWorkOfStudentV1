@@ -6,51 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/sakta_bg">
 
-    <LinearLayout
-        android:id="@+id/headerContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="18dp"
-        android:paddingBottom="6dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Подборки рядом"
-            android:textColor="@color/sakta_text_primary"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Свежие сеты с большими скидками"
-            android:textColor="@color/sakta_text_muted"
-            android:textSize="13sp" />
-
-    </LinearLayout>
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/searchCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="4dp"
-        app:cardBackgroundColor="@color/sakta_surface"
-        app:cardCornerRadius="22dp"
-        app:cardElevation="4dp"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Sakta.RoundedMedium"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="2dp"
         app:strokeColor="@color/sakta_divider"
         app:strokeWidth="1dp"
-        app:layout_constraintTop_toBottomOf="@id/headerContainer"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -58,7 +23,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Каталог"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/sakta_text_primary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Свежие подборки по лучшим ценам"
+                android:textColor="@color/sakta_text_muted"
+                android:layout_marginTop="2dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilSearch"
@@ -66,83 +46,65 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Поиск товаров и заведений"
-                app:startIconDrawable="@drawable/ic_search"
-                app:shapeAppearance="@style/ShapeAppearanceOverlay.Sakta.RoundedMedium">
+                android:layout_marginTop="12dp"
+                app:startIconDrawable="@drawable/ic_search">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etSearch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionSearch"
-                    android:inputType="text" />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <HorizontalScrollView
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/filterRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:scrollbars="none">
+                android:layout_marginTop="10dp"
+                app:singleSelection="false"
+                app:singleLine="true">
 
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/filterRow"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFast"
+                    style="@style/Widget.Material3.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:singleLine="true"
-                    app:singleSelection="false"
-                    app:chipSpacingHorizontal="8dp">
+                    android:text="Рядом"
+                    app:chipBackgroundColor="@drawable/bg_chip_outline"
+                    app:chipStrokeWidth="0dp"
+                    app:chipIcon="@android:drawable/ic_menu_mylocation"
+                    app:chipIconTint="@color/sakta_text_muted"
+                    android:checkable="true" />
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chipFast"
-                        style="@style/Widget.Material3.Chip.Filter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checkable="true"
-                        android:text="Рядом"
-                        app:chipBackgroundColor="@color/chip_neutral_selector"
-                        app:chipIcon="@drawable/ic_location"
-                        app:chipIconTint="@color/sakta_text_muted"
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.Sakta.RoundedMedium" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipToday"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Забрать сегодня"
+                    app:chipBackgroundColor="@drawable/bg_chip_outline"
+                    app:chipStrokeWidth="0dp"
+                    app:chipIcon="@drawable/ic_timer"
+                    app:chipIconTint="@color/sakta_text_muted"
+                    android:checkable="true" />
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chipToday"
-                        style="@style/Widget.Material3.Chip.Filter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checkable="true"
-                        android:text="Забрать сегодня"
-                        app:chipBackgroundColor="@color/chip_neutral_selector"
-                        app:chipIcon="@drawable/ic_timer"
-                        app:chipIconTint="@color/sakta_text_muted"
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.Sakta.RoundedMedium" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chipDiscount"
-                        style="@style/Widget.Material3.Chip.Filter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checkable="true"
-                        android:text="Скидки 40%+"
-                        app:chipBackgroundColor="@color/chip_neutral_selector"
-                        app:chipIcon="@drawable/ic_discount"
-                        app:chipIconTint="@color/sakta_text_muted"
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.Sakta.RoundedMedium" />
-                </com.google.android.material.chip.ChipGroup>
-            </HorizontalScrollView>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDiscount"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Скидки 40%+"
+                    app:chipBackgroundColor="@drawable/bg_chip_outline"
+                    app:chipStrokeWidth="0dp"
+                    app:chipIcon="@drawable/ic_filter_list"
+                    app:chipIconTint="@color/sakta_text_muted"
+                    android:checkable="true" />
+            </com.google.android.material.chip.ChipGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Подберите сет по расстоянию и времени"
-                    android:textColor="@color/sakta_text_muted"
-                    android:textSize="13sp" />
+                android:layout_marginTop="8dp"
+                android:gravity="end">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSort"
@@ -151,9 +113,9 @@
                     android:layout_height="wrap_content"
                     android:text="Сортировка"
                     android:textAllCaps="false"
-                    app:icon="@drawable/ic_sort"
-                    app:iconTint="@color/sakta_primary"
-                    android:textColor="@color/sakta_primary" />
+                    app:icon="@drawable/ic_filter_list"
+                    app:iconTint="@color/sakta_text_muted"
+                    android:textColor="@color/sakta_text_primary" />
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -163,54 +125,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingHorizontal="8dp"
-        android:paddingBottom="120dp"
+        android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@id/searchCard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_product" />
-
-    <LinearLayout
-        android:id="@+id/fabRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="18dp">
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/fabFilter"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Фильтр"
-            android:textAllCaps="false"
-            android:textColor="@color/sakta_text_primary"
-            app:backgroundTint="@color/sakta_surface"
-            app:icon="@drawable/ic_filter_list"
-            app:iconTint="@color/sakta_primary"
-            app:elevation="4dp"
-            app:shapeAppearance="@style/ShapeAppearanceOverlay.Sakta.RoundedLarge"
-            android:paddingHorizontal="18dp"
-            android:layout_marginEnd="10dp" />
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/fabSort"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="Сортировка"
-            android:textAllCaps="false"
-            android:textColor="@color/sakta_text_primary"
-            app:backgroundTint="@color/sakta_surface"
-            app:icon="@drawable/ic_sort"
-            app:iconTint="@color/sakta_primary"
-            app:elevation="4dp"
-            app:shapeAppearance="@style/ShapeAppearanceOverlay.Sakta.RoundedLarge"
-            android:paddingHorizontal="18dp" />
-    </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

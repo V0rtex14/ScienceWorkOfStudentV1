@@ -25,11 +25,6 @@
         <item name="cornerSize">18dp</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.Sakta.RoundedLarge">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">24dp</item>
-    </style>
-
     <style name="TextAppearance.Sakta.Title">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>

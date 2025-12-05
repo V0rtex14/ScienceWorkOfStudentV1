@@ -60,8 +60,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.tvPickup.setText(p.getPickupUntil());
         holder.tvDistance.setText(String.format(Locale.getDefault(), "%.1f км", p.getDistanceKm()));
         holder.tvRating.setText(String.format(Locale.getDefault(), "★ %.1f", p.getRating()));
-        holder.tvCategory.setText(p.getCategory());
-        holder.tvCompany.setText(p.getCompany());
 
         // Цены
         holder.tvPriceOld.setText(p.getOldPrice() + " с");

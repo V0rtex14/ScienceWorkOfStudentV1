@@ -41,12 +41,7 @@ public class CatalogFragment extends Fragment {
     private Chip chipToday;
     private Chip chipDiscount;
     private MaterialButton btnSort;
-    private ExtendedFloatingActionButton fabFilter;
-    private ExtendedFloatingActionButton fabSort;
     private SortOption currentSort = SortOption.PRICE_ASC;
-    private String selectedCategory = "";
-    private String selectedCompany = "";
-    private boolean onlyOpen;
 
     private enum SortOption {
         PRICE_ASC,
@@ -70,8 +65,6 @@ public class CatalogFragment extends Fragment {
         chipToday = v.findViewById(R.id.chipToday);
         chipDiscount = v.findViewById(R.id.chipDiscount);
         btnSort = v.findViewById(R.id.btnSort);
-        fabFilter = v.findViewById(R.id.fabFilter);
-        fabSort = v.findViewById(R.id.fabSort);
 
         adapter = new ProductAdapter(new ProductAdapter.OnProductActionListener() {
             @Override
@@ -125,70 +118,6 @@ public class CatalogFragment extends Fragment {
         chipDiscount.setOnCheckedChangeListener(chipListener);
 
         btnSort.setOnClickListener(this::showSortMenu);
-        fabSort.setOnClickListener(this::showSortMenu);
-        fabFilter.setOnClickListener(v -> showFilterSheet());
-    }
-
-    private void showFilterSheet() {
-        BottomSheetDialog dialog = new BottomSheetDialog(requireContext(), R.style.ThemeOverlay_Material3_BottomSheetDialog);
-        View sheet = LayoutInflater.from(requireContext()).inflate(R.layout.sheet_filters, null, false);
-        ChipGroup categoryGroup = sheet.findViewById(R.id.groupCategories);
-        ChipGroup companyGroup = sheet.findViewById(R.id.groupCompanies);
-        SwitchMaterial switchOpen = sheet.findViewById(R.id.switchOpen);
-
-        // Restore previous state
-        switchOpen.setChecked(onlyOpen);
-        selectChipByTag(categoryGroup, selectedCategory);
-        selectChipByTag(companyGroup, selectedCompany);
-
-        sheet.findViewById(R.id.btnClose).setOnClickListener(v -> dialog.dismiss());
-        sheet.findViewById(R.id.btnReset).setOnClickListener(v -> {
-            selectedCategory = "";
-            selectedCompany = "";
-            onlyOpen = false;
-            categoryGroup.clearCheck();
-            companyGroup.clearCheck();
-            switchOpen.setChecked(false);
-            chipFast.setChecked(false);
-            chipToday.setChecked(false);
-            chipDiscount.setChecked(false);
-            applyFilters();
-            dialog.dismiss();
-        });
-
-        sheet.findViewById(R.id.btnApplyFilters).setOnClickListener(v -> {
-            selectedCategory = getCheckedTag(categoryGroup);
-            selectedCompany = getCheckedTag(companyGroup);
-            onlyOpen = switchOpen.isChecked();
-            applyFilters();
-            dialog.dismiss();
-        });
-
-        dialog.setContentView(sheet);
-        dialog.show();
-    }
-
-    private void selectChipByTag(ChipGroup group, String tag) {
-        if (tag == null || tag.isEmpty()) return;
-        for (int i = 0; i < group.getChildCount(); i++) {
-            View child = group.getChildAt(i);
-            Object childTag = child.getTag();
-            if (childTag != null && childTag.toString().equalsIgnoreCase(tag)) {
-                group.check(child.getId());
-                break;
-            }
-        }
-    }
-
-    private String getCheckedTag(ChipGroup group) {
-        int checkedId = group.getCheckedChipId();
-        if (checkedId != View.NO_ID) {
-            View chip = group.findViewById(checkedId);
-            if (chip != null && chip.getTag() != null) {
-                return chip.getTag().toString();
-            }
-        }
-        return "";
     }
 
     private void showSortMenu(View anchor) {
@@ -213,18 +142,15 @@ public class CatalogFragment extends Fragment {
         allProducts.add(new Product(1, "Шаурма куриная",
                 "Осталась с обеда, забрать до 21:00",
                 220, 110, 50, R.drawable.ic_category_food,
-                1.2, "Забрать до 20:45", 4.6f, true,
-                "Супермаркет", "Sakta Market", true));
+                1.2, "Забрать до 20:45", 4.6f, true));
         allProducts.add(new Product(2, "Салат Цезарь",
                 "Порция 350 г, срок до 20:30",
                 180, 90, 50, R.drawable.ic_category_food,
-                2.8, "До 19:30", 4.4f, true,
-                "Кафе", "CAFE BONO", true));
+                2.8, "До 19:30", 4.4f, true));
         allProducts.add(new Product(3, "Сет выпечки",
                 "6 шт. круассанов, осталось после завтрака",
                 320, 160, 50, R.drawable.ic_category_food,
-                4.3, "До 18:00", 4.8f, false,
-                "Дистрибьютор", "Пекарня Доброе утро", false));
+                4.3, "До 18:00", 4.8f, false));
     }
 
     private void applyFilters() {
@@ -243,9 +169,6 @@ public class CatalogFragment extends Fragment {
             if (onlyNear && p.getDistanceKm() > 3.0) continue;
             if (onlyToday && !p.isAvailableToday()) continue;
             if (onlyDiscounted && p.getDiscountPercent() < 40) continue;
-            if (onlyOpen && !p.isOpenNow()) continue;
-            if (!selectedCategory.isEmpty() && !p.getCategory().equalsIgnoreCase(selectedCategory)) continue;
-            if (!selectedCompany.isEmpty() && !p.getCompany().equalsIgnoreCase(selectedCompany)) continue;
             filtered.add(p);
         }
 
