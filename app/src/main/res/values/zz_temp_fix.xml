@@ -9,12 +9,4 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">18dp</item>
     </style>
-    <!-- ... existing themes ... -->
-
-    <!-- Add this missing style -->
-    <style name="TextAppearance.Sakta" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <!-- Add other text attributes here if needed -->
-    </style>
 </resources>

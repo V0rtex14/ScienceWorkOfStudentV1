@@ -9,7 +9,7 @@ import android.widget.*;
 import androidx.annotation.*;
 import androidx.fragment.app.Fragment;
 
-import com.example.sakta.R;
+import com.example.maket.R;
 
 
 public class ProductDetailFragment extends Fragment {
