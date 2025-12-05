@@ -3,6 +3,7 @@ package com.example.sakta.ui.favorites;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ public class FavoritesFragment extends Fragment {
 
     private RecyclerView rvOrders;
     private OrderAdapter adapter;
+    private LinearLayout emptyState;
 
     @Nullable
     @Override
@@ -30,6 +32,7 @@ public class FavoritesFragment extends Fragment {
 
         rvOrders = v.findViewById(R.id.rvOrders);
         rvOrders.setLayoutManager(new LinearLayoutManager(requireContext()));
+        emptyState = v.findViewById(R.id.emptyState);
 
         adapter = new OrderAdapter(new OrderAdapter.OnOrderActionListener() {
             @Override
@@ -50,6 +53,7 @@ public class FavoritesFragment extends Fragment {
         rvOrders.setAdapter(adapter);
 
         adapter.setItems(getDemoOrders());
+        updateEmptyState();
 
         return v;
     }
@@ -63,5 +67,11 @@ public class FavoritesFragment extends Fragment {
                 "CAFE BONO", "19:40", Order.STATUS_COMPLETED));
 
         return list;
+    }
+
+    private void updateEmptyState() {
+        boolean isEmpty = adapter.getItemCount() == 0;
+        rvOrders.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
+        emptyState.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
     }
 }

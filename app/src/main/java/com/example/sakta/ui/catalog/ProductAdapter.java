@@ -88,9 +88,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         // Потом сюда можно прикрутить Glide/Picasso для URL.
         if (p.getImageResId() != 0) {
             holder.imgPhoto.setImageResource(p.getImageResId());
+            holder.imgLogo.setImageResource(p.getImageResId());
         } else {
             holder.imgPhoto.setImageResource(android.R.drawable.ic_menu_report_image);
+            holder.imgLogo.setImageResource(R.drawable.ic_store);
         }
+
+        holder.tvOpen.setText(p.isOpenNow() ? "Открыто" : "Закрыто");
+        int openColor = androidx.core.content.ContextCompat.getColor(
+                holder.tvOpen.getContext(),
+                p.isOpenNow() ? R.color.sakta_success : R.color.sakta_text_muted
+        );
+        holder.tvOpen.setTextColor(openColor);
 
         // Клик по всей карточке
         holder.itemView.setOnClickListener(v -> {
@@ -119,6 +128,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         TextView tvPriceOld;
         TextView tvDiscount;
         TextView tvPriceNew;
+        TextView tvCategory;
+        TextView tvCompany;
+        TextView tvOpen;
+        ImageView imgLogo;
         MaterialButton btnBook;
 
         public ProductViewHolder(@NonNull View itemView) {
@@ -132,6 +145,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             tvPriceOld = itemView.findViewById(R.id.tvPriceOld);
             tvDiscount = itemView.findViewById(R.id.tvDiscount);
             tvPriceNew = itemView.findViewById(R.id.tvPriceNew);
+            tvCategory = itemView.findViewById(R.id.tvCategory);
+            tvCompany = itemView.findViewById(R.id.tvCompany);
+            tvOpen = itemView.findViewById(R.id.tvOpen);
+            imgLogo = itemView.findViewById(R.id.imgLogo);
             btnBook = itemView.findViewById(R.id.btnBook);
         }
     }
