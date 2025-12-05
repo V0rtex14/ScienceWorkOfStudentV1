@@ -1,99 +1,155 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/sakta_bg"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:orientation="vertical">
 
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilFavSearch"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Поиск по заказам"
-        android:layout_marginBottom="6dp"
-        app:startIconDrawable="@drawable/ic_search">
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:strokeColor="@color/sakta_divider"
+        app:strokeWidth="1dp"
+        app:cardElevation="0dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etFavSearch"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/toggleOrders"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:singleSelection="true">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnActive"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Активные"
-            app:icon="@drawable/ic_timer" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnHistory"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="История"
-            app:icon="@drawable/ic_history"/>
-    </com.google.android.material.button.MaterialButtonToggleGroup>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Мои заказы"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/sakta_text_primary" />
 
-    <!-- новый ряд: фильтр/сортировка для избранного -->
-    <LinearLayout
-        android:animateLayoutChanges="true"
-        android:id="@+id/filterRowFav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="start|center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Активные и прошлые бронирования"
+                android:textColor="@color/sakta_text_muted"
+                android:layout_marginTop="2dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnFavFilter"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="Фильтр"
-            app:icon="@drawable/ic_filter_list"
-            app:iconGravity="textStart"
-            app:strokeColor="@color/sakta_divider"
-            app:strokeWidth="1dp"
-            android:backgroundTint="@android:color/transparent"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFavSearch"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Поиск по заказам"
+                android:layout_marginTop="12dp"
+                app:startIconDrawable="@drawable/ic_search">
 
-        <Space android:layout_width="8dp" android:layout_height="1dp"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFavSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnFavSort"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="Сортировка"
-            app:icon="@drawable/ic_sort"
-            app:iconGravity="textStart"
-            app:strokeColor="@color/sakta_divider"
-            app:strokeWidth="1dp"
-            android:backgroundTint="@android:color/transparent"/>
-    </LinearLayout>
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnActive"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Активные"
+                    app:icon="@drawable/ic_timer" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnHistory"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="История"
+                    app:icon="@drawable/ic_history" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="start|center_vertical">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/btnFavFilter"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Фильтр"
+                    app:chipIcon="@drawable/ic_filter_list"
+                    app:chipIconTint="@color/sakta_text_muted"
+                    android:checkable="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/btnFavSort"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Сортировка"
+                    app:chipIcon="@drawable/ic_sort"
+                    app:chipIconTint="@color/sakta_text_muted"
+                    android:checkable="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvOrders"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="12dp"
         android:layout_weight="1"
-        android:padding="4dp"
-        tools:listitem="@layout/item_order"/>
+        android:clipToPadding="false"
+        android:paddingBottom="12dp"
+        tools:listitem="@layout/item_order" />
 
+    <LinearLayout
+        android:id="@+id/emptyState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:background="@drawable/bg_chip_soft"
+        android:gravity="center"
+        android:padding="24dp"
+        android:visibility="gone">
 
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_favorite"
+            android:tint="@color/sakta_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="У вас пока нет избранного"
+            android:textColor="@color/sakta_text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="Добавляйте любимые блюда и забирайте со скидкой!"
+            android:textColor="@color/sakta_text_muted"
+            android:textSize="14sp" />
+    </LinearLayout>
 </LinearLayout>

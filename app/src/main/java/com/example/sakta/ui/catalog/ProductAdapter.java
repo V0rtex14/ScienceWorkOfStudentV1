@@ -15,6 +15,7 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Адаптер для списка товаров в каталоге.
@@ -56,6 +57,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         holder.tvTitle.setText(p.getTitle());
         holder.tvDesc.setText(p.getDescription());
+        holder.tvPickup.setText(p.getPickupUntil());
+        holder.tvDistance.setText(String.format(Locale.getDefault(), "%.1f км", p.getDistanceKm()));
+        holder.tvRating.setText(String.format(Locale.getDefault(), "★ %.1f", p.getRating()));
+        holder.tvCategory.setText(p.getCategory());
+        holder.tvCompany.setText(p.getCompany());
 
         // Цены
         holder.tvPriceOld.setText(p.getOldPrice() + " с");
@@ -84,9 +90,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         // Потом сюда можно прикрутить Glide/Picasso для URL.
         if (p.getImageResId() != 0) {
             holder.imgPhoto.setImageResource(p.getImageResId());
+            holder.imgLogo.setImageResource(p.getImageResId());
         } else {
             holder.imgPhoto.setImageResource(android.R.drawable.ic_menu_report_image);
+            holder.imgLogo.setImageResource(R.drawable.ic_store);
         }
+
+        holder.tvOpen.setText(p.isOpenNow() ? "Открыто" : "Закрыто");
+        int openColor = androidx.core.content.ContextCompat.getColor(
+                holder.tvOpen.getContext(),
+                p.isOpenNow() ? R.color.sakta_success : R.color.sakta_text_muted
+        );
+        holder.tvOpen.setTextColor(openColor);
 
         // Клик по всей карточке
         holder.itemView.setOnClickListener(v -> {
@@ -109,9 +124,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         ImageView imgPhoto;
         TextView tvTitle;
         TextView tvDesc;
+        TextView tvPickup;
+        TextView tvDistance;
+        TextView tvRating;
         TextView tvPriceOld;
         TextView tvDiscount;
         TextView tvPriceNew;
+        TextView tvCategory;
+        TextView tvCompany;
+        TextView tvOpen;
+        ImageView imgLogo;
         MaterialButton btnBook;
 
         public ProductViewHolder(@NonNull View itemView) {
@@ -119,9 +141,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             imgPhoto = itemView.findViewById(R.id.imgPhoto);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDesc = itemView.findViewById(R.id.tvDesc);
+            tvPickup = itemView.findViewById(R.id.tvPickup);
+            tvDistance = itemView.findViewById(R.id.tvDistance);
+            tvRating = itemView.findViewById(R.id.tvRating);
             tvPriceOld = itemView.findViewById(R.id.tvPriceOld);
             tvDiscount = itemView.findViewById(R.id.tvDiscount);
             tvPriceNew = itemView.findViewById(R.id.tvPriceNew);
+            tvCategory = itemView.findViewById(R.id.tvCategory);
+            tvCompany = itemView.findViewById(R.id.tvCompany);
+            tvOpen = itemView.findViewById(R.id.tvOpen);
+            imgLogo = itemView.findViewById(R.id.imgLogo);
             btnBook = itemView.findViewById(R.id.btnBook);
         }
     }

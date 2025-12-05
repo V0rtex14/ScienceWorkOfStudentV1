@@ -8,9 +8,18 @@ public class Product {
     private int newPrice;
     private int discountPercent;
     private int imageResId; // локальный ресурс. Потом можно заменить на String imageUrl
+    private double distanceKm;
+    private String pickupUntil;
+    private float rating;
+    private boolean availableToday;
+    private String category;
+    private String company;
+    private boolean openNow;
 
     public Product(long id, String title, String description,
-                   int oldPrice, int newPrice, int discountPercent, int imageResId) {
+                   int oldPrice, int newPrice, int discountPercent, int imageResId,
+                   double distanceKm, String pickupUntil, float rating, boolean availableToday,
+                   String category, String company, boolean openNow) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -18,6 +27,13 @@ public class Product {
         this.newPrice = newPrice;
         this.discountPercent = discountPercent;
         this.imageResId = imageResId;
+        this.distanceKm = distanceKm;
+        this.pickupUntil = pickupUntil;
+        this.rating = rating;
+        this.availableToday = availableToday;
+        this.category = category;
+        this.company = company;
+        this.openNow = openNow;
     }
 
     public long getId() { return id; }
@@ -27,6 +43,13 @@ public class Product {
     public int getNewPrice() { return newPrice; }
     public int getDiscountPercent() { return discountPercent; }
     public int getImageResId() { return imageResId; }
+    public double getDistanceKm() { return distanceKm; }
+    public String getPickupUntil() { return pickupUntil; }
+    public float getRating() { return rating; }
+    public boolean isAvailableToday() { return availableToday; }
+    public String getCategory() { return category; }
+    public String getCompany() { return company; }
+    public boolean isOpenNow() { return openNow; }
 
     public void setId(long id) { this.id = id; }
     public void setTitle(String title) { this.title = title; }
@@ -35,4 +58,11 @@ public class Product {
     public void setNewPrice(int newPrice) { this.newPrice = newPrice; }
     public void setDiscountPercent(int discountPercent) { this.discountPercent = discountPercent; }
     public void setImageResId(int imageResId) { this.imageResId = imageResId; }
+    public void setDistanceKm(double distanceKm) { this.distanceKm = distanceKm; }
+    public void setPickupUntil(String pickupUntil) { this.pickupUntil = pickupUntil; }
+    public void setRating(float rating) { this.rating = rating; }
+    public void setAvailableToday(boolean availableToday) { this.availableToday = availableToday; }
+    public void setCategory(String category) { this.category = category; }
+    public void setCompany(String company) { this.company = company; }
+    public void setOpenNow(boolean openNow) { this.openNow = openNow; }
 }

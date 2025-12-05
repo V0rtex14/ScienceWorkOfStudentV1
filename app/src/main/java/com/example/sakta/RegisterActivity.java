@@ -14,6 +14,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sakta.core.ThemeManager;
+import com.example.sakta.ui.profile.ProfileFragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     private LinearLayout sellerFields;
     private ImageView ivBusinessPhoto, ivLicense;
     private MaterialButton btnRegister;
+    private ImageView activePickerTarget;
 
     private String role;
     private Uri businessPhotoUri = null;
@@ -42,27 +45,32 @@ public class RegisterActivity extends AppCompatActivity {
     private final ActivityResultLauncher<String> pickMediaLauncher = registerForActivityResult(
             new ActivityResultContracts.GetContent(),
             uri -> {
-                if (uri != null) {
-                    // Определяем, какое поле обновляем
-                    if (getCurrentFocus() == ivBusinessPhoto) {
-                        businessPhotoUri = uri;
-                        ivBusinessPhoto.setImageURI(uri);
-                    } else if (getCurrentFocus() == ivLicense) {
-                        licenseUri = uri;
-                        ivLicense.setImageURI(uri);
-                    }
+                if (uri == null || activePickerTarget == null) {
+                    return;
                 }
+                if (activePickerTarget == ivBusinessPhoto) {
+                    businessPhotoUri = uri;
+                    ivBusinessPhoto.setImageURI(uri);
+                } else if (activePickerTarget == ivLicense) {
+                    licenseUri = uri;
+                    ivLicense.setImageURI(uri);
+                }
+                activePickerTarget = null;
             });
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ThemeManager.applyThemeFromPreferences(this);
         setContentView(R.layout.activity_register);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
         role = getIntent().getStringExtra("role"); // "buyer" или "seller"
+        if (role == null) {
+            role = "buyer";
+        }
         String prefilledEmail = getIntent().getStringExtra("prefilled_email");
 
         // Привязываем все View один раз
@@ -91,18 +99,17 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         // Клик по фото → выбор изображения
-        ivBusinessPhoto.setOnClickListener(v -> {
-            v.requestFocus();
-            pickMediaLauncher.launch("image/*");
-        });
+        ivBusinessPhoto.setOnClickListener(v -> openPicker(ivBusinessPhoto, "image/*"));
 
-        ivLicense.setOnClickListener(v -> {
-            v.requestFocus();
-            pickMediaLauncher.launch("*/*"); // фото + PDF
-        });
+        ivLicense.setOnClickListener(v -> openPicker(ivLicense, "*/*")); // фото + PDF
 
         // Кнопка регистрации
         btnRegister.setOnClickListener(v -> attemptRegister());
+    }
+
+    private void openPicker(ImageView target, String mimeType) {
+        activePickerTarget = target;
+        pickMediaLauncher.launch(mimeType);
     }
 
     private void attemptRegister() {
@@ -170,6 +177,7 @@ public class RegisterActivity extends AppCompatActivity {
                             .set(userData)
                             .addOnSuccessListener(aVoid -> {
                                 Toast.makeText(RegisterActivity.this, "Регистрация успешна!", Toast.LENGTH_SHORT).show();
+                                saveEmail(email);
                                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                                 finish();
                             })
@@ -182,5 +190,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     private String getTextSafe(TextInputEditText editText) {
         return editText.getText() != null ? editText.getText().toString().trim() : "";
+    }
+
+    private void saveEmail(String email) {
+        getSharedPreferences(ProfileFragment.PREFS_NAME, MODE_PRIVATE)
+                .edit()
+                .putString(ProfileFragment.KEY_USER_EMAIL, email)
+                .apply();
     }
 }

@@ -56,10 +56,14 @@ public class CatalogFragment extends Fragment {
         List<Product> list = new ArrayList<>();
         list.add(new Product(1, "Шаурма куриная",
                 "Осталась с обеда, забрать до 21:00",
-                220, 110, 50, R.drawable.ic_category_food));
+                220, 110, 50, R.drawable.ic_category_food,
+                1.2, "До 20:30", 4.5f, true,
+                "Супермаркет", "Sakta Market", true));
         list.add(new Product(2, "Салат Цезарь",
                 "Порция 350 г, срок до 20:30",
-                180, 90, 50, R.drawable.ic_category_food));
+                180, 90, 50, R.drawable.ic_category_food,
+                2.4, "До 19:00", 4.2f, true,
+                "Кафе", "CAFE BONO", true));
         return list;
     }
 }

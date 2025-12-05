@@ -2,12 +2,11 @@
 <resources>
     <style name="ShapeAppearanceOverlay.Sakta">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
+        <item name="cornerSize">18dp</item>
     </style>
 
     <style name="ShapeAppearanceOverlay">
-    <item name="cornerFamily">rounded</item>
-    <item name="cornerSize">12dp</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
     </style>
-
 </resources>
